@@ -1,0 +1,1 @@
+export default function Termos(){return <main className="section"><div className="container"><span className="eyebrow">TERMOS</span><h1>Termos de uso</h1><p className="lead">O conteúdo do PromoRadar tem finalidade informativa. Condições de ofertas devem ser conferidas na fonte antes da compra.</p></div></main>}
