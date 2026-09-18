@@ -4,7 +4,8 @@ services:
     runtime: node
     plan: free
     region: ohio
-    buildCommand: npm ci && npm run build
+    rootDir: apps/web
+    buildCommand: npm install && npm run build
     startCommand: npm start
     autoDeploy: true
     envVars:
