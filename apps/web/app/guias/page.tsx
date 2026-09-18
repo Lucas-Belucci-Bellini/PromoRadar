@@ -1,2 +1,19 @@
-const guides=['Como comparar preços de verdade','Como montar um PC custo-benefício','SSD: o que importa além do número de GB','Como escolher um notebook para faculdade','Como avaliar uma promoção relâmpago','Frete e preço final: como comparar corretamente','Garantia e nota fiscal: o que conferir','Como reconhecer uma variação falsa de desconto','Quando esperar para comprar um eletrônico','Checklist antes de fechar uma compra'];
-export default function Guias(){return <main className="section"><div className="container"><span className="eyebrow">EDITORIAL</span><h1>Guias de compra</h1><p className="lead">Conteúdo original para entender especificações, preço, histórico e condições de compra.</p><div className="cards">{guides.map((g,i)=><article className="card" key={g}><span className="tag">GUIA {String(i+1).padStart(2,'0')}</span><h3>{g}</h3><p>Critérios práticos para pesquisar melhor e comparar produtos com contexto.</p><a className="button secondary" href="/guias">Explorar guia</a></article>)}</div></div></main>}
+import { GuideCard } from '../../components/guide-card';
+import { guides } from '../../lib/demo-data';
+
+export const metadata = { title: 'Guias' };
+
+export default function Guias() {
+  return (
+    <section className="page">
+      <div className="container">
+        <span className="eyebrow">EDITORIAL</span>
+        <h1 className="page-title">Guias de compra</h1>
+        <p className="lead">Conteúdo original para entender especificações, preço, histórico e condições.</p>
+        <div className="cards" style={{ marginTop: 28 }}>
+          {guides.map((guide) => <GuideCard key={guide.slug} guide={guide} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
