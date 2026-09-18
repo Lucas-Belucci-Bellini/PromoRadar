@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { AffiliateNotice } from '../../../components/affiliate-notice';
 import { deals, findDeal, formatBRL } from '../../../lib/demo-data';
 
 export function generateStaticParams() {
@@ -30,6 +31,7 @@ export default function Oferta({ params }: { params: { slug: string } }) {
           <div className="stat"><strong>—</strong><span>frete real</span></div>
           <div className="stat"><strong>—</strong><span>histórico real</span></div>
         </div>
+        <AffiliateNotice />
         <article className="article">
           <h2>Análise</h2>
           <p>{deal.description}</p>
@@ -37,7 +39,7 @@ export default function Oferta({ params }: { params: { slug: string } }) {
           <p>{deal.note}</p>
           <h3>Futura versão operacional</h3>
           <p>Esta página receberá variante, vendedor, disponibilidade, custo total, fonte e histórico quando as integrações autorizadas estiverem conectadas.</p>
-          <div className="notice">Registro demonstrativo. Não existe link comercial ativo.</div>
+          <div className="notice">Registro demonstrativo. Não existe link comercial ativo nesta versão.</div>
         </article>
       </div>
     </section>
