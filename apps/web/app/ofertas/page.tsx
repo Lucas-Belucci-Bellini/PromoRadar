@@ -1,9 +1,11 @@
 import { DealCard } from '../../components/deal-card';
-import { deals } from '../../lib/demo-data';
+import { catalogRepository } from '../../lib/repository';
 
 export const metadata = { title: 'Ofertas' };
 
-export default function Ofertas() {
+export default async function Ofertas() {
+  const deals = await catalogRepository.listDeals();
+
   return (
     <section className="page">
       <div className="container">
