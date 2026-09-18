@@ -1,18 +1,14 @@
 import { notFound } from 'next/navigation';
 import { AffiliateNotice } from '../../../components/affiliate-notice';
-import { deals, findDeal, formatBRL } from '../../../lib/demo-data';
+import { catalogRepository } from '../../../lib/repository';
+import { deals, formatBRL } from '../../../lib/demo-data';
 
 export function generateStaticParams() {
   return deals.map((deal) => ({ slug: deal.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const deal = findDeal(params.slug);
-  return { title: deal?.title || 'Oferta' };
-}
-
-export default function Oferta({ params }: { params: { slug: string } }) {
-  const deal = findDeal(params.slug);
+export default async function Oferta({ params }: { params: { slug: string } }) {
+  const deal = await catalogRepository.findDeal(params.slug);
   if (!deal) notFound();
 
   const discount = deal.previousPrice && deal.previousPrice > deal.price
@@ -39,7 +35,6 @@ export default function Oferta({ params }: { params: { slug: string } }) {
           <p>{deal.note}</p>
           <h3>Futura versão operacional</h3>
           <p>Esta página receberá variante, vendedor, disponibilidade, custo total, fonte e histórico quando as integrações autorizadas estiverem conectadas.</p>
-          <div className="notice">Registro demonstrativo. Não existe link comercial ativo nesta versão.</div>
         </article>
       </div>
     </section>
